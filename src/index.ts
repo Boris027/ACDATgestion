@@ -191,9 +191,6 @@ function main(){
                 quedarse=false
             }
         }
-
-        
-
     }
 }
 

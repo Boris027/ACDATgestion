@@ -76,19 +76,24 @@ export class Instituto{
             for(let a of this.arrayMateria){
                 a.desmatricularalumno(idusuario)
             }
-            this.arrayAlumno.splice(idusuario,1)
+
+            const index = this.arrayAlumno.findIndex(alumno => alumno.getid() === idusuario);
+            if (index !== -1) {
+                this.arrayAlumno.splice(index, 1);
+            }
         }else{
             console.log("El usuario no existe")
         }
     }
 
     eliminarMateria(idmateria:number){
-        if((this.arrayMateria.filter((Materia:Materia)=>{return Materia.getid()==idmateria})).length==1){
+        const index = this.arrayMateria.findIndex(materia => materia.getid() === idmateria);
 
-            
-            this.arrayMateria.splice(idmateria,1)
-        }else{
-            console.log("La materia no existe")
+        if (index !== -1) { // Si se encuentra la materia
+            // Elimina la materia del array
+            this.arrayMateria.splice(index, 1);
+        } else {
+            console.log("La materia no existe");
         }
     }
 
