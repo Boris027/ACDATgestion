@@ -7,7 +7,7 @@ export class Instituto{
     arrayMateria:Materia[]=[]
 
     constructor(){
-
+        
     }
 
     anadirAlumno(nombre:string,apellidos:string){
@@ -18,10 +18,53 @@ export class Instituto{
         this.arrayMateria.push(new Materia(nombre))
     }
 
-    veralumnos(){
-        for(let a in this.arrayAlumno){
-            console.log(a)
+    verAlumnos(){
+        for(let a of this.arrayAlumno){
+            console.log(a.toString())
         }
     }
 
+    verMateria(){
+        for(let a of this.arrayMateria){
+            console.log(a.toString())
+        }
+    }
+
+    buscarAlumno(id:Number){
+        return this.arrayAlumno.filter((Alumno)=>{
+            return Alumno.getid()==id
+        })
+    }
+
+    matricularAlumno(idusuario:Number,idmateria:Number){
+        if((this.arrayAlumno.filter((Alumno:Alumno)=>{return Alumno.getid()==idusuario})).length==1){
+
+            if((this.arrayMateria.filter((Materia:Materia)=>{return Materia.getid()==idmateria})).length==1){
+                let materia:Materia[]=this.arrayMateria.filter((Materia)=>{return Materia.getid()==idmateria})
+                if(materia.length>0) materia[0].matricularalumno(idusuario,-5)
+            }else{
+                console.log("La materia no existe")
+            }
+        }else{
+            console.log("El usuario no existe")
+        }
+    }
+
+    desmatricularAlumno(idusuario:Number,idmateria:Number){
+        if((this.arrayAlumno.filter((Alumno:Alumno)=>{return Alumno.getid()==idusuario})).length==1){
+
+            if((this.arrayMateria.filter((Materia:Materia)=>{return Materia.getid()==idmateria})).length==1){
+                let materia:Materia[]=this.arrayMateria.filter((Materia)=>{return Materia.getid()==idmateria})
+                if(materia.length>0) materia[0].desmatricularalumno(idusuario)
+            }else{
+                console.log("La materia no existe")
+            }
+        }else{
+            console.log("El usuario no existe")
+        }
+    }
+
+    
+
 }
+

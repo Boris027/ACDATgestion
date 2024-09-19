@@ -6,6 +6,8 @@ export class Materia{
     private id:number=0
     private nombre:string=""
 
+    //primero va el id del usuario y despues la nota
+    private hashmap=new Map<Number,Number>
 
     constructor(nombre:string){
         this.nombre=nombre
@@ -19,6 +21,30 @@ export class Materia{
 
     getnombre(){
         return this.nombre
+    }
+
+    matricularalumno(id:Number,nota:Number){
+
+        //si no tiene nota se le pone -5
+        if(nota==undefined){
+            this.hashmap.set(id,-5)
+        }else{
+            this.hashmap.set(id,nota)
+        }
+
+        console.log(this.hashmap)
+    }
+
+    desmatricularalumno(id:Number){
+        this.hashmap.delete(id)
+    }
+
+    vermatriculados(){
+
+    }
+
+    toString():String{
+        return `${this.nombre} [${this.id}]`
     }
     
 

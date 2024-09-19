@@ -25,8 +25,8 @@ export class Alumno{
         return this.id
     }
 
-    toString(){
-        return "hi"
+    toString():String{
+        return `${this.nombre} ${this.apellidos} [${this.id}]`
     }
     
 
