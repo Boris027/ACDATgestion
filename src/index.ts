@@ -6,7 +6,7 @@ import { Alumno } from './Alumno';
 
 let a1=new Alumno("boris","gallego")
 let a2=new Alumno("boris","gallego")
-console.log(a2.getid())
+console.log(a2)
 
 
 

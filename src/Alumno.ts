@@ -25,7 +25,9 @@ export class Alumno{
         return this.id
     }
 
-    
+    toString(){
+        return "hi"
+    }
     
 
 }
