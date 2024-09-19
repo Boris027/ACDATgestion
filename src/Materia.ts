@@ -1,5 +1,8 @@
 //nombre id nota
 
+import { Alumno } from "./Alumno"
+import { Instituto } from "./Instituto"
+
 export class Materia{
 
     private static idfinal:number=0
@@ -45,12 +48,25 @@ export class Materia{
         }else{
             return false
         }
-
-        
     }
 
-    toString():String{
+    toString():string{
         return `${this.nombre} [${this.id}]`
+    }
+
+    toStringnota(instituto:Instituto){
+        instituto.arrayAlumno.map((Alumno:Alumno)=>{
+
+            if(this.hashmap.has(Alumno.getid())){
+                if(this.hashmap.get(Alumno.getid())==-5){
+                    console.log(Alumno.getnombre()+" "+Alumno.getapellidos()+" "+"(No tiene nota asignada)")
+                }else{
+                    console.log(Alumno.getnombre()+" "+Alumno.getapellidos()+" ("+this.hashmap.get(Alumno.getid())+")")
+                }
+
+            }
+
+        })
     }
     
 

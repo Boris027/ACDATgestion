@@ -10,6 +10,12 @@ export class Instituto{
         
     }
 
+   
+
+    getAlumno(idusuario:number){
+        return this.arrayAlumno.filter((Alumno:Alumno)=>{return Alumno.getid()==idusuario})
+    }
+
     anadirAlumno(nombre:string,apellidos:string){
         this.arrayAlumno.push(new Alumno(nombre,apellidos))
     }
@@ -70,7 +76,7 @@ export class Instituto{
             for(let a of this.arrayMateria){
                 a.desmatricularalumno(idusuario)
             }
-            this.arrayAlumno.splice(idusuario)
+            this.arrayAlumno.splice(idusuario,1)
         }else{
             console.log("El usuario no existe")
         }
@@ -81,13 +87,29 @@ export class Instituto{
 
             
             let materias:Materia[]=this.arrayMateria.filter((Materia:Materia)=>{return Materia.estamatriculado(idusuario)})
-            for(let a of materias){
-                console.log(a.getnombre())
-            }
 
-            
+            if(materias.length>0){
+                for(let a of materias){
+                    console.log(a.getnombre())
+                }
+            }else{
+                console.log("Este usuario no esta matriculado en ninguna materia")
+            }
+              
         }else{
             console.log("El usuario no existe")
+        }
+    }
+
+
+    verlistaAlumnos(idmateria:number){
+        if((this.arrayMateria.filter((Materia:Materia)=>{return Materia.getid()==idmateria})).length==1){
+            let materia:Materia[]=this.arrayMateria.filter((Materia:Materia)=>{return Materia.getid()==idmateria})
+            if(materia.length>0){
+                materia[0].toStringnota(this)
+            }
+        }else{
+            console.log("La materia no existe")
         }
     }
 
