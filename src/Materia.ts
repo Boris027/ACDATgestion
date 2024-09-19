@@ -54,6 +54,16 @@ export class Materia{
         return `${this.nombre} [${this.id}]`
     }
 
+    ponernota(id:number,nota:number){
+
+        if(this.hashmap.has(id)){
+            this.hashmap.set(id,nota)
+        }else{
+            console.log("Ese usuario no se encuentra matriculado en esta materia")
+        }
+
+    }
+
     toStringnota(instituto:Instituto){
         instituto.arrayAlumno.map((Alumno:Alumno)=>{
 

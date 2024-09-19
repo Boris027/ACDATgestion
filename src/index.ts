@@ -6,6 +6,7 @@ import { Alumno } from './Alumno';
 import { Instituto } from './Instituto';
 
 function Menu1(){
+    console.log()
     console.log("Menu principal")
     console.log("---------------")
     console.log("1.Alumnos")
@@ -17,13 +18,15 @@ function Menu1(){
 function caso1(instituto:Instituto):Instituto{
     let quedarse:boolean=true
     while(quedarse){
+        console.log()
         console.log("Alumnos")
         console.log("-----------")
         console.log("1.Añadir")
         console.log("2.Eliminar")
         console.log("3.Ver Alumnos")
         console.log("4.Ver materias del Alumno")
-        console.log("5.Salir")
+        console.log("5.Asignar nota de materia a alumno")
+        console.log("6.Salir")
         let opcion=pediropcion()
         switch(opcion){
             case 1:
@@ -42,13 +45,26 @@ function caso1(instituto:Instituto):Instituto{
             case 3:
                 instituto.verAlumnos()
             break;
-            case 4:
+            case 4:{
                 instituto.verAlumnos()
                 console.log("Introduce el ID del usuario que quieras ver donde esta matriculado")
                 let opcion=pediropcion()
                 instituto.verMateriasalumno(opcion)
+            }
             break;
-            case 5:
+            case 5:{
+                instituto.verAlumnos()
+                console.log("Introduce el ID del usuario del cual quieras poner la nota")
+                let opcion=pediropcion()
+                instituto.verMateriasalumno(opcion)
+                console.log("Indica de que asignatura quieres ponerle la nota")
+                let opcion2=pediropcion()
+                console.log("Introduzca la nota")
+                let nota=pediropcion()
+                instituto.ponernota(opcion,nota,opcion2)
+            }
+            break;
+            case 6:
                 quedarse=false
             break;
         }
@@ -59,14 +75,14 @@ function caso1(instituto:Instituto):Instituto{
 function caso2(instituto:Instituto):Instituto{
     let quedarse:boolean=true
     while(quedarse){
+        console.log()
         console.log("Materias")
         console.log("-----------")
         console.log("1.Añadir")
         console.log("2.Eliminar")
         console.log("3.Ver Materias")
-        console.log("4.Asignar nota de materia a alumno")
-        console.log("5.Ver lista de Alumnos con nota")
-        console.log("6.Salir")
+        console.log("4.Ver lista de Alumnos con nota")
+        console.log("5.Salir")
         let opcion=pediropcion()
         switch(opcion){
             case 1:
@@ -75,18 +91,23 @@ function caso2(instituto:Instituto):Instituto{
                 instituto.anadirMateria(materia)
             break;
             case 2:
-
+                instituto.verMateria()
+                console.log("Introduce el ID de la materia que quieras eliminar")
+                let opcion=pediropcion()
+                instituto.eliminarMateria(opcion)
             break;
             case 3:
                 instituto.verMateria()
             break;
-            case 5:
+            
+            case 4:{
                 instituto.verMateria()
                 console.log("Introduce el ID de la materia de la cual quieras ver la lista")
                 let opcion=pediropcion()
                 instituto.verlistaAlumnos(opcion)
+            }
             break;
-            case 6:
+            case 5:
                 quedarse=false
             break;
         }
@@ -97,6 +118,7 @@ function caso2(instituto:Instituto):Instituto{
 function caso3(instituto:Instituto):Instituto{
     let quedarse:boolean=true
     while(quedarse){
+        console.log()
         console.log("Matriculaciones")
         console.log("-----------")
         console.log("1.Matricular")
@@ -117,7 +139,7 @@ function caso3(instituto:Instituto):Instituto{
                 instituto.verAlumnos()
                 console.log("Introduce el ID del usuario al cual quieres desmatricular")
                 let opcion=pediropcion()
-                instituto.verMateria()
+                instituto.verMateriasalumno(opcion)
                 console.log("Introduce el ID del curso al cual quieres desmatricular")
                 let opcion2=pediropcion()
                 instituto.desmatricularAlumno(opcion,opcion2)

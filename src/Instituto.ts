@@ -82,7 +82,17 @@ export class Instituto{
         }
     }
 
-    verMateriasalumno(idusuario:number){
+    eliminarMateria(idmateria:number){
+        if((this.arrayMateria.filter((Materia:Materia)=>{return Materia.getid()==idmateria})).length==1){
+
+            
+            this.arrayMateria.splice(idmateria,1)
+        }else{
+            console.log("La materia no existe")
+        }
+    }
+
+    verMateriasalumno(idusuario:number,mostraridmateria?:boolean){
         if((this.arrayAlumno.filter((Alumno:Alumno)=>{return Alumno.getid()==idusuario})).length==1){
 
             
@@ -90,7 +100,8 @@ export class Instituto{
 
             if(materias.length>0){
                 for(let a of materias){
-                    console.log(a.getnombre())
+                    
+                    console.log(a.toString())
                 }
             }else{
                 console.log("Este usuario no esta matriculado en ninguna materia")
@@ -110,6 +121,24 @@ export class Instituto{
             }
         }else{
             console.log("La materia no existe")
+        }
+    }
+
+
+    ponernota(idusuario:number,nota:number,idmateria:number){
+        if((this.arrayAlumno.filter((Alumno:Alumno)=>{return Alumno.getid()==idusuario})).length==1){
+
+            
+            let materias:Materia[]=this.arrayMateria.filter((Materia:Materia)=>{return Materia.getid()==idmateria})
+
+            if(materias.length>0){
+                materias[0].ponernota(idusuario,nota)
+            }else{
+                console.log("Este usuario no esta matriculado en ninguna materia")
+            }
+              
+        }else{
+            console.log("El usuario no existe")
         }
     }
 
