@@ -39,8 +39,14 @@ export class Materia{
         this.hashmap.delete(id)
     }
 
-    vermatriculados(){
+    estamatriculado(id:Number):Boolean{
+        if(this.hashmap.has(id)){
+            return true
+        }else{
+            return false
+        }
 
+        
     }
 
     toString():String{

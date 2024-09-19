@@ -21,8 +21,9 @@ function caso1(instituto:Instituto):Instituto{
         console.log("-----------")
         console.log("1.Añadir")
         console.log("2.Eliminar")
-        console.log("3.Ver")
-        console.log("4.Salir")
+        console.log("3.Ver Alumnos")
+        console.log("4.Ver materias del Alumno")
+        console.log("5.Salir")
         let opcion=pediropcion()
         switch(opcion){
             case 1:
@@ -32,13 +33,22 @@ function caso1(instituto:Instituto):Instituto{
                 let apellidos:string=pedirString()
                 instituto.anadirAlumno(nombre,apellidos)
             break;
-            case 2:
-
-            break;
+            case 2:{
+                instituto.verAlumnos()
+                console.log("Introduce el ID del usuario que quieres eliminar")
+                let opcion=pediropcion()
+                instituto.eliminarAlumno(opcion)
+            }break;
             case 3:
                 instituto.verAlumnos()
             break;
             case 4:
+                instituto.verAlumnos()
+                console.log("Introduce el ID del usuario que quieras ver donde esta matriculado")
+                let opcion=pediropcion()
+                instituto.verMateriasalumno(opcion)
+            break;
+            case 5:
                 quedarse=false
             break;
         }
@@ -53,14 +63,49 @@ function caso2(instituto:Instituto):Instituto{
         console.log("-----------")
         console.log("1.Añadir")
         console.log("2.Eliminar")
-        console.log("3.Ver")
-        console.log("4.Salir")
+        console.log("3.Ver Materias")
+        console.log("4.Asignar nota de materia a alumno ")
+        console.log("5.Salir")
         let opcion=pediropcion()
         switch(opcion){
             case 1:
                 console.log("Nombre de Materia")
                 let materia:string=pedirString()
                 instituto.anadirMateria(materia)
+            break;
+            case 2:
+
+            break;
+            case 3:
+                instituto.verMateria()
+            break;
+            case 5:
+                quedarse=false
+            break;
+        }
+    }
+    return instituto
+}
+
+function caso3(instituto:Instituto):Instituto{
+    let quedarse:boolean=true
+    while(quedarse){
+        console.log("Matriculaciones")
+        console.log("-----------")
+        console.log("1.Matricular")
+        console.log("2.Desmatricular")
+        console.log("3.Ver")
+        console.log("4.Salir")
+        let opcion=pediropcion()
+        switch(opcion){
+            case 1:
+                instituto.verAlumnos()
+                console.log("Introduce el ID del usuario al cual quieres matricular")
+                let opcion=pediropcion()
+                instituto.verMateria()
+                console.log("Introduce el ID del curso al cual quieres matricular")
+                let opcion2=pediropcion()
+                instituto.matricularAlumno(opcion,opcion2)
             break;
             case 2:
 
@@ -76,17 +121,7 @@ function caso2(instituto:Instituto):Instituto{
     return instituto
 }
 
-/*
-function Menu(){
-    console.log("1.Añadir Alumno")
-    console.log("2.Añadir Materia")
-    console.log('3.Ver Alumnos')
-    console.log('4.Ver Materias')
-    console.log("5.Matricular Alumno")
-    console.log("6.Ver materias de Alumno")
-    console.log("7.Desmatricular Alumno")
-    console.log("8.Salir")
-}*/
+
 
 function pediropcion():number{
     return readline.questionInt()
@@ -114,48 +149,17 @@ while(quedarse){
         case 2:{
             instituto=caso2(instituto)
         }
+        break;
+        case 3:{
+            instituto=caso3(instituto)
+        }
+        break;
+        case 4:{
+            quedarse=false
+        }
     }
 
-    /*
-    switch(opcion){
-        case 1:
-            console.log("Nombre de usuario")
-            let nombre:string=pedirString()
-            console.log("Apellido de usuario")
-            let apellidos:string=pedirString()
-            instituto.anadirAlumno(nombre,apellidos)
-        break;
-        case 2:
-            console.log("Nombre de Materia")
-            let materia:string=pedirString()
-            instituto.anadirMateria(materia)
-        break
-        case 3:
-            instituto.verAlumnos()
-        break;
-        case 4:
-            instituto.verMateria()
-        break;
-        case 5:{
-            instituto.verAlumnos()
-            console.log("Introduce el ID del usuario al cual quieres matricular")
-            let opcion=pediropcion()
-            instituto.verMateria()
-            console.log("Introduce el ID del curso al cual quieres matricular")
-            let opcion2=pediropcion()
-            instituto.matricularAlumno(opcion,opcion2)
-        }break;
-        case 7:{
-            instituto.verAlumnos()
-            console.log("Introduce el ID del usuario al cual quieres desmatricular")
-            let opcion=pediropcion()
-            instituto.verMateria()
-            console.log("Introduce el ID del curso al cual quieres matricular")
-            let opcion2=pediropcion()
-            instituto.matricularAlumno(opcion,opcion2)
-        }break;
-    }
-    */
+    
 
 }
 

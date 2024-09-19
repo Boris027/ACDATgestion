@@ -64,6 +64,33 @@ export class Instituto{
         }
     }
 
+    eliminarAlumno(idusuario:number){
+        if((this.arrayAlumno.filter((Alumno:Alumno)=>{return Alumno.getid()==idusuario})).length==1){
+
+            for(let a of this.arrayMateria){
+                a.desmatricularalumno(idusuario)
+            }
+            this.arrayAlumno.splice(idusuario)
+        }else{
+            console.log("El usuario no existe")
+        }
+    }
+
+    verMateriasalumno(idusuario:number){
+        if((this.arrayAlumno.filter((Alumno:Alumno)=>{return Alumno.getid()==idusuario})).length==1){
+
+            
+            let materias:Materia[]=this.arrayMateria.filter((Materia:Materia)=>{return Materia.estamatriculado(idusuario)})
+            for(let a of materias){
+                console.log(a.getnombre())
+            }
+
+            
+        }else{
+            console.log("El usuario no existe")
+        }
+    }
+
     
 
 }
