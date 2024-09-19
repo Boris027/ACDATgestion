@@ -1,12 +1,16 @@
 //nombre apellidos y materia
 export class Alumno{
 
-    private nombre:String=""
-    private apellidos:String=""
+    private static finalid:number=0
+    private id:number=0
+    private nombre:string=""
+    private apellidos:string=""
 
-    constructor(nombre:String,apellidos:String){
+    constructor(nombre:string,apellidos:string){
         this.nombre=nombre
         this.apellidos=apellidos
+        this.id=Alumno.finalid
+        Alumno.finalid+=1
     }
 
     getnombre(){
@@ -17,6 +21,11 @@ export class Alumno{
         return this.apellidos
     }
 
+    getid(){
+        return this.id
+    }
+
+    
     
 
 }
