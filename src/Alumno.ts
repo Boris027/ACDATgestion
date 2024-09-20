@@ -13,19 +13,19 @@ export class Alumno{
         Alumno.finalid+=1
     }
 
-    getnombre(){
+    getnombre():string{
         return this.nombre
     }
 
-    getapellidos(){
+    getapellidos():string{
         return this.apellidos
     }
 
-    getid(){
+    getid():number{
         return this.id
     }
 
-    toString():String{
+    toString():string{
         return `${this.nombre} ${this.apellidos} [${this.id}]`
     }
     

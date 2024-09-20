@@ -166,7 +166,7 @@ function pedirString():string{
 
 function main(){
     let instituto:Instituto=new Instituto()
-    let quedarse:Boolean=true
+    let quedarse:boolean=true
     instituto.anadirAlumno("Boris","Gallego")
     instituto.anadirMateria("Programacion")
     while(quedarse){

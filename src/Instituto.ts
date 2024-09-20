@@ -36,13 +36,13 @@ export class Instituto{
         }
     }
 
-    buscarAlumno(id:Number){
+    buscarAlumno(id:number){
         return this.arrayAlumno.filter((Alumno)=>{
             return Alumno.getid()==id
         })
     }
 
-    matricularAlumno(idusuario:Number,idmateria:Number){
+    matricularAlumno(idusuario:number,idmateria:number){
         if((this.arrayAlumno.filter((Alumno:Alumno)=>{return Alumno.getid()==idusuario})).length==1){
 
             if((this.arrayMateria.filter((Materia:Materia)=>{return Materia.getid()==idmateria})).length==1){
@@ -56,7 +56,7 @@ export class Instituto{
         }
     }
 
-    desmatricularAlumno(idusuario:Number,idmateria:Number){
+    desmatricularAlumno(idusuario:number,idmateria:number){
         if((this.arrayAlumno.filter((Alumno:Alumno)=>{return Alumno.getid()==idusuario})).length==1){
 
             if((this.arrayMateria.filter((Materia:Materia)=>{return Materia.getid()==idmateria})).length==1){

@@ -26,7 +26,7 @@ export class Materia{
         return this.nombre
     }
 
-    matricularalumno(id:Number,nota:Number){
+    matricularalumno(id:number,nota:number){
 
         //si no tiene nota se le pone -5
         if(nota==undefined){
@@ -38,11 +38,11 @@ export class Materia{
         console.log(this.hashmap)
     }
 
-    desmatricularalumno(id:Number){
+    desmatricularalumno(id:number){
         this.hashmap.delete(id)
     }
 
-    estamatriculado(id:Number):Boolean{
+    estamatriculado(id:number):boolean{
         if(this.hashmap.has(id)){
             return true
         }else{
